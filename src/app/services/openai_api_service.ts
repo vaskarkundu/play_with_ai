@@ -7,8 +7,7 @@ export class OpenaiService {
   constructor() {}
 
   async getCompletion(messages: any) {
-    const OPENAI_API_KEY =
-      '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';
+    const OPENAI_API_KEY = 'sk';
     const url = 'https://api.openai.com/v1/chat/completions';
     console.log('message', messages);
     const data = {
