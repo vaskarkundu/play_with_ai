@@ -1,0 +1,59 @@
+/* .card {
+  width: calc(33.33% - 20px);
+  height: calc(100% - 20px);
+  margin-bottom: 20px;
+  background-color: #fffefe;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  padding: 20px;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: calc(100% - 20px);
+    height: auto;
+  }
+} */
+
+.card {
+  width: 300px; /* Adjust the width as needed */
+  height: 400px; /* Adjust the height as needed */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  margin-bottom: 25px;
+  cursor: pointer;
+
+  /* Add transition for smooth hover effect */
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+  background-color: #ccc;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+/* Additional styles for card appearance */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
