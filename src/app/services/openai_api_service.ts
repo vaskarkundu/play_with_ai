@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Injectable } from '@angular/core';
+import { environment } from 'environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -7,9 +8,9 @@ export class OpenaiService {
   constructor() {}
 
   async getCompletion(messages: any) {
-    const OPENAI_API_KEY = 'sk';
+    const KEY = environment.key;
     const url = 'https://api.openai.com/v1/chat/completions';
-    console.log('message', messages);
+    console.log('message', KEY);
     const data = {
       model: 'gpt-3.5-turbo',
       messages: [
@@ -36,7 +37,7 @@ export class OpenaiService {
       const response = await axios.post(url, data, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
+          Authorization: `Bearer ${KEY}`,
         },
       });
 
