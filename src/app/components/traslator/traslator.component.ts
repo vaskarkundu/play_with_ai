@@ -10,7 +10,6 @@ export class TraslatorComponent {
   constructor(private AiServices: OpenaiService) {}
 
   ngOnInit() {
-    console.log('hi');
     this.getOpenaiCompletion();
   }
 
