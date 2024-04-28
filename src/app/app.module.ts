@@ -7,8 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TraslatorComponent } from './components/traslator/traslator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
-import { NgSelectModule } from '@ng-select/ng-select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // NgSelectModule
 @NgModule({
@@ -19,7 +19,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    NgSelectModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
