@@ -11,6 +11,7 @@ export class TraslatorComponent {
 
   ngOnInit() {
     this.getOpenaiCompletion();
+    console.log('vaskar');
   }
 
   async getOpenaiCompletion() {
