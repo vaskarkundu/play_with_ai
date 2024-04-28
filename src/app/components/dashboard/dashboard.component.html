@@ -28,10 +28,22 @@
   </div>
 </div>
 <div class="container">
-  <mat-grid-list [cols]="breakpoint" rowHeight="1:2" gutterSize="20px">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
+  <mat-grid-list cols="3" rowHeight="4:3" gutterSize="20px">
+    <mat-grid-tile *ngFor="let card of cards" (click)="navigateTo(card.id)">
+      <mat-card>
+        <mat-card-content>
+          <div class="d-flex justify-content-center">
+            <div>
+              <h2 class="mb-2">{{ card.title }}</h2>
+            </div>
+            <div class="align-self-center">
+              <!-- <mat-icon>keyboard_arrow_right</mat-icon> -->
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </div>
+          <p class="mb-2">{{ card.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>

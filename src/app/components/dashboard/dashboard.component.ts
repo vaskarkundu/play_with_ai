@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
   constructor(private router: Router) {}
-  breakpoint: 3;
+  breakpoint: '3';
   cards = [
     {
       id: 'traslator',
