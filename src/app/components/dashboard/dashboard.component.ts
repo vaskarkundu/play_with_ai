@@ -5,10 +5,12 @@ import { Router } from '@angular/router';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
+  // standalone: true,
+  // imports: [MatGridListModule],
 })
 export class DashboardComponent {
   constructor(private router: Router) {}
-
+  breakpoint: 3;
   cards = [
     {
       id: 'traslator',

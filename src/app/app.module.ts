@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // NgSelectModule
 @NgModule({
@@ -21,6 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     FormsModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
