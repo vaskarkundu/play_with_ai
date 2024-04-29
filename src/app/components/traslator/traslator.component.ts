@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OpenaiService } from 'src/app/services/openai_api_service';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+
 interface Language {
   id: string;
   name: string;
@@ -11,15 +12,29 @@ interface Language {
   styleUrls: ['./traslator.component.css'],
 })
 export class TraslatorComponent {
-  massage: any = [];
+  massage: any = [
+    {
+      role: 'system',
+      content: 'You are a helpful assistant.',
+    },
+  ];
+  a = 'Aion Vaskar';
   allLanguages: Language[] = [
     {
-      id: 'english',
+      id: 'en',
       name: 'English',
     },
     {
-      id: 'garman',
-      name: 'Garman',
+      id: 'de',
+      name: 'German',
+    },
+    {
+      id: 'fr',
+      name: 'French',
+    },
+    {
+      id: 'es',
+      name: 'Spanish',
     },
   ];
   translatorForm: FormGroup;
@@ -29,29 +44,38 @@ export class TraslatorComponent {
   ) {}
 
   ngOnInit() {
-    // this.getOpenaiCompletion();
-
     this.getTranslatorForm();
   }
 
   getTranslatorForm() {
     this.translatorForm = this.formBuilder.group({
-      sourceLanguage: [null],
+      sourceLanguage: this.formBuilder.array([]),
 
       targetLanguage: this.formBuilder.array([]),
     });
-
-    this.addTarget();
+    this.addSourceLanguage();
+    this.addTargetLanguage();
   }
 
   get targetLanguag() {
     return this.translatorForm.get('targetLanguage') as FormArray;
   }
 
-  addTarget() {
+  get sourceLanguage() {
+    return this.translatorForm.get('sourceLanguage') as FormArray;
+  }
+
+  addSourceLanguage() {
+    const sorceGroup = this.formBuilder.group({
+      sourceValue: [null, Validators.required],
+      sourceInput: [null, Validators.required],
+    });
+    this.sourceLanguage.push(sorceGroup);
+  }
+  addTargetLanguage() {
     const targetGroup = this.formBuilder.group({
-      targetValue: [null],
-      // targetInput: [null],
+      targetValue: [null, Validators.required],
+      targetInput: [null],
     });
     this.targetLanguag.push(targetGroup);
   }
@@ -65,8 +89,19 @@ export class TraslatorComponent {
     }
   }
 
-  onSubmit() {
-    console.log('submit', this.translatorForm.value);
+  async onSubmit() {
+    const content = {
+      language: this.translatorForm.get('sourceLanguage')?.value[0].sourceValue,
+      content: this.translatorForm.get('sourceLanguage')?.value[0].sourceInput,
+    };
+    this.massage.push(content);
+    console.log('submit', this.massage);
+    // try {
+    //   const completion = await this.AiServices.getCompletion('a');
+    //   console.log('OpenAI Completion:', completion);
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
   }
   reverse() {
     console.log('d');
