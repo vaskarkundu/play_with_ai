@@ -5,5 +5,32 @@
     </div>
   </div>
 
-  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+  <div class="row">
+    <form
+      [formGroup]="translatorForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+    >
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Select Language</mat-label>
+            <mat-select name="food" formControlName="sourceLanguage">
+              <mat-option *ngFor="let lan of allLanguages" [value]="lan.id">{{
+                lan.name
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button mat-raised-button color="primary" type="submit">
+            Translate
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

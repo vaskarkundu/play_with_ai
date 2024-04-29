@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { OpenaiService } from 'src/app/services/openai_api_service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+interface Language {
+  id: string;
+  name: string;
+}
 @Component({
   selector: 'app-traslator',
   templateUrl: './traslator.component.html',
@@ -9,18 +12,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class TraslatorComponent {
   massage: any = [];
-  allLanguages: any = [
+  allLanguages: Language[] = [
     {
-      ID: 'english',
-      Name: 'English',
+      id: 'english',
+      name: 'English',
     },
     {
-      ID: 'english',
-      Name: 'English',
-    },
-    {
-      ID: 'english',
-      Name: 'English',
+      id: 'garman',
+      name: 'Garman',
     },
   ];
   translatorForm: FormGroup;
@@ -31,15 +30,19 @@ export class TraslatorComponent {
 
   ngOnInit() {
     // this.getOpenaiCompletion();
-    this.getTranslatorForm();
+    this.translatorForm = this.formBuilder.group({
+      sourceLanguage: [null],
+      targetLanguage: [null],
+    });
+    // this.getTranslatorForm();
   }
 
-  getTranslatorForm() {
-    this.translatorForm = this.formBuilder.group({
-      sourceLanguage: [''],
-      targetLanguage: [''],
-    });
-  }
+  // getTranslatorForm() {
+  //   this.translatorForm = this.formBuilder.group({
+  //     sourceLanguage: [null],
+  //     targetLanguage: [null],
+  //   });
+  // }
 
   async getOpenaiCompletion() {
     try {
@@ -51,6 +54,6 @@ export class TraslatorComponent {
   }
 
   onSubmit() {
-    console.log('submit');
+    console.log('submit', this.translatorForm.value);
   }
 }
