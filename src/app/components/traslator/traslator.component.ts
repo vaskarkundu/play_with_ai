@@ -15,7 +15,8 @@ export class TraslatorComponent {
   massage: any = [
     {
       role: 'system',
-      content: 'You are a helpful assistant.',
+      content:
+        "You are a helpful assistant. I'm using this for translating from English to Spanish or any other language; so please provide only the translation without any additional response",
     },
   ];
   a = 'Aion Vaskar';
@@ -91,17 +92,25 @@ export class TraslatorComponent {
 
   async onSubmit() {
     const content = {
-      language: this.translatorForm.get('sourceLanguage')?.value[0].sourceValue,
-      content: this.translatorForm.get('sourceLanguage')?.value[0].sourceInput,
+      role: 'user',
+      content: `${
+        this.translatorForm.get('sourceLanguage')?.value[0].sourceInput
+      }; translate this to "${
+        this.translatorForm.get('targetLanguage')?.value[0].targetValue
+      }" language`,
     };
     this.massage.push(content);
-    console.log('submit', this.massage);
-    // try {
-    //   const completion = await this.AiServices.getCompletion('a');
-    //   console.log('OpenAI Completion:', completion);
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+
+    try {
+      const completion = await this.AiServices.getCompletion(this.massage);
+      this.massage.push(completion.choices[0].message);
+      const result = completion.choices[0].message.content;
+
+      console.log('result', result);
+      console.log('OpenAI Completion:', completion);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
   reverse() {
     console.log('d');
