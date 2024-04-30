@@ -105,14 +105,20 @@ export class TraslatorComponent {
       const completion = await this.AiServices.getCompletion(this.massage);
       this.massage.push(completion.choices[0].message);
       const result = completion.choices[0].message.content;
-
-      console.log('result', result);
-      console.log('OpenAI Completion:', completion);
+      const targetGroup: any = this.targetLanguag.at(0) as FormGroup;
+      targetGroup.get('targetInput').setValue(result);
     } catch (error) {
       console.error('Error:', error);
     }
   }
   reverse() {
-    console.log('d');
+    const sourceValue = this.translatorForm.get('sourceLanguage')?.value[0];
+    const targetedValue = this.translatorForm.get('targetLanguage')?.value[0];
+    const targetGroup: any = this.targetLanguag.at(0) as FormGroup;
+    const sourceGroup: any = this.sourceLanguage.at(0) as FormGroup;
+    targetGroup.patchValue(sourceValue);
+    sourceGroup.patchValue(targetedValue);
+    console.log('Sv', sourceValue);
+    console.log('Tv', targetedValue);
   }
 }
