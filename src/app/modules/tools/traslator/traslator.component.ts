@@ -3,6 +3,7 @@ import { OpenaiService } from 'src/app/services/openai_api_service';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { of, from, interval, Subject } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 interface Language {
   id: string;
@@ -43,7 +44,8 @@ export class TraslatorComponent {
   translatorForm: FormGroup;
   constructor(
     private AiServices: OpenaiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -139,6 +141,7 @@ export class TraslatorComponent {
       const result = completion.choices[0].message.content;
       const targetGroup: any = this.targetLanguag.at(0) as FormGroup;
       targetGroup.get('targetInput').setValue(result);
+      this.toastr.success('Hello world!', 'Toastr fun!');
     } catch (error: any) {
       console.error('Errorsss:', error);
     }

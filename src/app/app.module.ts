@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TraslatorComponent } from './components/traslator/traslator.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,17 +18,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ToolsModule } from './modules/tools/tools.module';
+import { ToastrModule } from 'ngx-toastr';
+// import { TraslatorComponentTest } from './components/traslator/traslator.component';
+// ToolsModule
 // NgSelectModule
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TraslatorComponent],
+  declarations: [AppComponent, DashboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ToolsModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     // for material lib
     MatSlideToggleModule,
     MatGridListModule,
