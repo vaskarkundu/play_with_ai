@@ -9,6 +9,7 @@ export class OpenaiService {
 
   async getCompletion(mes: any) {
     const KEY = environment.key;
+    // const KEY = 'sk-jsfdksldljsdlsdk';
     const url = 'https://api.openai.com/v1/chat/completions';
     console.log('message', KEY);
     const data = {
@@ -26,7 +27,7 @@ export class OpenaiService {
 
       return response.data;
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
       throw error;
     }
   }

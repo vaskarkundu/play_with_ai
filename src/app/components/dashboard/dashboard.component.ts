@@ -46,6 +46,6 @@ export class DashboardComponent {
   ];
 
   navigateTo(id: string) {
-    this.router.navigate(['/' + id]);
+    this.router.navigate(['/tools/' + id]);
   }
 }
