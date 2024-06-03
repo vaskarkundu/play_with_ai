@@ -8,8 +8,8 @@ export class OpenaiService {
   constructor() {}
 
   async getCompletion(mes: any) {
-    const KEY = environment.key;
-    // const KEY = 'sk-jsfdksldljsdlsdk';
+    // const KEY = environment.key;
+    const KEY = 'sk-jsfdksldljsdlsdk';
     const url = 'https://api.openai.com/v1/chat/completions';
     console.log('message', KEY);
     const data = {
