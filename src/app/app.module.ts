@@ -20,6 +20,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolsModule } from './modules/tools/tools.module';
 import { ToastrModule } from 'ngx-toastr';
+
+import { SharedModule } from './modules/shared/shared.module';
+
 // import { TraslatorComponentTest } from './components/traslator/traslator.component';
 // ToolsModule
 // NgSelectModule
@@ -30,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     NgbModule,
     ToolsModule,
+    SharedModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
