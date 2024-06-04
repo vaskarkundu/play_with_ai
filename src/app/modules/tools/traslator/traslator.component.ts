@@ -24,6 +24,7 @@ export class TraslatorComponent {
     },
   ];
   a = 'Aion Vaskar';
+  title: string = 'AI-Driven Translator';
   allLanguages: Language[] = [
     {
       id: 'en',
@@ -50,7 +51,6 @@ export class TraslatorComponent {
   ) {}
 
   ngOnInit() {
-    console.log('aion');
     this.checkRxjs();
 
     this.getTranslatorForm();
