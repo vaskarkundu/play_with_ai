@@ -7,86 +7,96 @@
   </div>
 
   <div class="row">
-    <form
-      [formGroup]="translatorForm"
-      (ngSubmit)="onSubmit()"
-      autocomplete="off"
-    >
-      <div class="row justify-content-md-center align-items-center">
-        <div class="col-md-5 col-sm-12" formArrayName="sourceLanguage">
-          <div
-            *ngFor="let sourceGroup of sourceLanguage.controls; let i = index"
-          >
-            <div [formGroupName]="i">
-              <mat-form-field>
-                <mat-label>Select Language</mat-label>
-                <mat-select name="food" formControlName="sourceValue">
-                  <mat-option
-                    *ngFor="let lan of allLanguages"
-                    [value]="lan.id"
-                    >{{ lan.name }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
+    <mat-card>
+      <mat-card-content>
+        <form
+          [formGroup]="translatorForm"
+          (ngSubmit)="onSubmit()"
+          autocomplete="off"
+        >
+          <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-5 col-sm-12" formArrayName="sourceLanguage">
+              <div
+                *ngFor="
+                  let sourceGroup of sourceLanguage.controls;
+                  let i = index
+                "
+              >
+                <div [formGroupName]="i">
+                  <mat-form-field>
+                    <mat-label>Select Language</mat-label>
+                    <mat-select name="food" formControlName="sourceValue">
+                      <mat-option
+                        *ngFor="let lan of allLanguages"
+                        [value]="lan.id"
+                        >{{ lan.name }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Enter a text</mat-label>
-                <textarea matInput formControlName="sourceInput"></textarea>
-              </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Enter a text</mat-label>
+                    <textarea matInput formControlName="sourceInput"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <div class="point text-center">
+                <i
+                  class="fa fa-arrows-h"
+                  aria-hidden="true"
+                  (click)="reverse()"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-md-5 col-sm-12" formArrayName="targetLanguage">
+              <div
+                *ngFor="
+                  let targetGroup of targetLanguag.controls;
+                  let i = index
+                "
+              >
+                <div [formGroupName]="i">
+                  <mat-form-field>
+                    <mat-label>Target Language</mat-label>
+                    <mat-select name="language" formControlName="targetValue">
+                      <mat-option
+                        *ngFor="let lan of allLanguages"
+                        [value]="lan.id"
+                        >{{ lan.name }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Traslating</mat-label>
+                    <textarea
+                      matInput
+                      formControlName="targetInput"
+                      readonly
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-2 col-sm-12">
-          <div class="point text-center">
-            <i
-              class="fa fa-arrows-h"
-              aria-hidden="true"
-              (click)="reverse()"
-            ></i>
-          </div>
-        </div>
 
-        <div class="col-md-5 col-sm-12" formArrayName="targetLanguage">
-          <div
-            *ngFor="let targetGroup of targetLanguag.controls; let i = index"
-          >
-            <div [formGroupName]="i">
-              <mat-form-field>
-                <mat-label>Target Language</mat-label>
-                <mat-select name="language" formControlName="targetValue">
-                  <mat-option
-                    *ngFor="let lan of allLanguages"
-                    [value]="lan.id"
-                    >{{ lan.name }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Traslating</mat-label>
-                <textarea
-                  matInput
-                  formControlName="targetInput"
-                  readonly
-                ></textarea>
-              </mat-form-field>
+          <div class="d-flex justify-content-center">
+            <div class="my-5">
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!translatorForm.valid"
+              >
+                Translate
+              </button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <div class="my-5">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="!translatorForm.valid"
-          >
-            Translate
-          </button>
-        </div>
-      </div>
-    </form>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
