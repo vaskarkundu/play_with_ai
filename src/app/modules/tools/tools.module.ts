@@ -15,7 +15,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TraslatorComponent } from './traslator/traslator.component';
-import { HeadingComponent } from '../shared/heading/heading.component';
 import { SharedModule } from '../shared/shared.module';
 import { SummarizeComponent } from './summarize/summarize.component';
 

@@ -161,8 +161,6 @@ export class TraslatorComponent {
     };
     this.massage.push(content);
 
-    console.log('msg', this.massage);
-
     try {
       const completion = await this.AiServices.getCompletion(this.massage);
       this.massage.push(completion.choices[0].message);
