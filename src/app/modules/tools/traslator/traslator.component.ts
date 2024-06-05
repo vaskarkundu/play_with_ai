@@ -23,7 +23,7 @@ export class TraslatorComponent {
         "You are a helpful assistant. I'm using this for translating from English to Spanish or any other language; so please provide only the translation without any additional response",
     },
   ];
-  a = 'Aion Vaskar';
+
   title: string = 'AI-Driven Translator';
   allLanguages: Language[] = [
     {
@@ -42,7 +42,32 @@ export class TraslatorComponent {
       id: 'es',
       name: 'Spanish',
     },
+    {
+      id: 'it',
+      name: 'Italian',
+    },
+    {
+      id: 'pt',
+      name: 'Portuguese',
+    },
+    {
+      id: 'ru',
+      name: 'Russian',
+    },
+    {
+      id: 'ja',
+      name: 'Japanese',
+    },
+    {
+      id: 'zh',
+      name: 'Chinese',
+    },
+    {
+      id: 'ko',
+      name: 'Korean',
+    },
   ];
+
   translatorForm: FormGroup;
   constructor(
     private AiServices: OpenaiService,
@@ -135,6 +160,8 @@ export class TraslatorComponent {
       }" language`,
     };
     this.massage.push(content);
+
+    console.log('msg', this.massage);
 
     try {
       const completion = await this.AiServices.getCompletion(this.massage);
