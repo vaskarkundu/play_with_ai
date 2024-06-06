@@ -75,7 +75,7 @@ export class SummarizeComponent {
 
     if (file) {
       if (format == 'json') {
-        this.readFile(file).subscribe(
+        this.readJsonFile(file).subscribe(
           (content) => {
             this.summarizeForm.patchValue({ input: content });
 
@@ -101,7 +101,7 @@ export class SummarizeComponent {
     }
   }
 
-  private readFile(file: File): Observable<any> {
+  private readJsonFile(file: File): Observable<any> {
     return new Observable((observer) => {
       const reader = new FileReader();
 
