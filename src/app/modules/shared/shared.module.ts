@@ -14,12 +14,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NotecardComponent } from './notecard/notecard.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
     HeadingComponent,
     NavigationButtonComponent,
     NotecardComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule, // for material lib
@@ -33,6 +35,11 @@ import { NotecardComponent } from './notecard/notecard.component';
     MatDividerModule,
     MatButtonModule,
   ],
-  exports: [HeadingComponent, NavigationButtonComponent, NotecardComponent],
+  exports: [
+    HeadingComponent,
+    NavigationButtonComponent,
+    NotecardComponent,
+    ButtonComponent,
+  ],
 })
 export class SharedModule {}
